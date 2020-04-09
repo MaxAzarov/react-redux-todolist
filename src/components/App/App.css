@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ul li{
+    display: flex;
+    justify-content:space-between;
+    list-style:none;
+    padding: 10px;
+    border:1px solid #ccc;
+    width:300px;
+    margin: 5px auto;
+    height:20px;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    margin-top: 1rem;
+}
