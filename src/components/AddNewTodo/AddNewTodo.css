@@ -1,0 +1,21 @@
+.newTodo{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.newTodo input{
+    width:85px;
+    padding:10px;
+    outline:none;
+}
+
+.newTodo input:last-child{
+    margin-right: 20px;
+}
+
+.AddNewTodo{
+    width:100px;
+    height:37px;
+    margin-left: 4px;
+}

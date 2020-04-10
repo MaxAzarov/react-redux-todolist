@@ -4,8 +4,15 @@ import { deleteItem, itemInfo } from "../../redux/actions/actions";
 
 import "./App.css";
 import ShowDetails from "./../TodoItemDetails/TodoItemDetails";
+import AddNewTodo from "./../AddNewTodo/AddNewTodo";
 
 class App extends Component {
+  async componentDidMount() {
+    await fetch("http://localhost:3000/api/todos")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }
+
   render() {
     return (
       <div>
@@ -31,6 +38,7 @@ class App extends Component {
             </li>
           ))}
         </ul>
+        <AddNewTodo />
         <ShowDetails details={this.props.details}></ShowDetails>
       </div>
     );

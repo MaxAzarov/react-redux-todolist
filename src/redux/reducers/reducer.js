@@ -19,23 +19,45 @@ const reducer = (state = initialState, action) => {
       let actions = state.actions.filter(
         (item) => item.name !== action.payload
       );
-      console.log(actions);
       return {
         ...state,
         actions,
       };
 
     case "ITEM_INFO":
-      console.log(action.payload);
       let details = state.actions.filter(
         (item) => item.name === action.payload
       );
       console.log(details);
-      // state.details = details;
       return {
         ...state,
         details,
       };
+
+    case "ADD_NEW_TODO":
+      console.log(action.todo);
+      const newTodo = {
+        name: action.todo,
+        description: `${action.description}`,
+      };
+      let todoexist = false;
+      state.actions.forEach((todo) => {
+        if (todo.name === action.todo) {
+          todoexist = true;
+        }
+      });
+      if (!todoexist) {
+        return {
+          ...state,
+          actions: [...state.actions, newTodo],
+        };
+      } else {
+        console.log("this todo already exist!");
+        return {
+          ...state,
+        };
+      }
+
     default:
       return state;
   }
