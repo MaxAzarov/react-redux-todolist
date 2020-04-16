@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { deleteItem, itemInfo } from "../../redux/actions/actions";
+import { deleteItem, itemInfo, GetTodos } from "../../redux/actions/actions";
 
 import "./App.css";
-import ShowDetails from "./../TodoItemDetails/TodoItemDetails";
-import AddNewTodo from "./../AddNewTodo/AddNewTodo";
+import ShowDetails from "../TodoItemDetails/TodoItemDetails";
+import AddNewTodo from "../AddNewTodo/AddNewTodo";
 
 class App extends Component {
   async componentDidMount() {
-    await fetch("http://localhost:3000/api/todos")
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    this.props.GetTodos();
   }
 
   render() {
@@ -55,6 +53,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     deleteItem: (number) => dispatch(deleteItem(number)),
     itemInfo: (number) => dispatch(itemInfo(number)),
+    GetTodos: () => dispatch(GetTodos()),
   };
 };
 

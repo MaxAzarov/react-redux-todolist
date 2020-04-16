@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import "./AddNewTodo.css";
-import { addNewTodo } from "./../../redux/actions/actions";
+import { addNewTodo } from "../../redux/actions/actions";
 
 class AddNewTodo extends Component {
   state = {

@@ -13,6 +13,7 @@ const reducer = (state = initialState, action) => {
     case "GET_TODOS":
       return {
         ...state,
+        actions: [...state.actions, ...action.payload],
       };
 
     case "DELETE_ITEM":
@@ -36,6 +37,7 @@ const reducer = (state = initialState, action) => {
 
     case "ADD_NEW_TODO":
       console.log(action.todo);
+
       const newTodo = {
         name: action.todo,
         description: `${action.description}`,
