@@ -5,7 +5,7 @@ const Todo = require("./schema");
 
 app.use(express.json());
 
-const port = process.env.PORT || 5000;
+const port = 5000;
 
 app.get("/api", (req, res) => {
   res.send({ name: "max" });
@@ -27,6 +27,15 @@ app.get("/todos", (req, res) => {
     console.log(todos);
     res.status(200).send(todos);
   });
+});
+
+app.delete("/todo/delete", async (req, res) => {
+  try {
+    const { name } = req.body;
+    Todo.deleteOne({ name }).then((todo) => console.log(todo));
+  } catch (e) {
+    throw new Error("Can't delete a todo!");
+  }
 });
 
 app.post("/todos", (req, res) => {

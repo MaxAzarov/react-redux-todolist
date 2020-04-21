@@ -1,10 +1,5 @@
 const initialState = {
-  actions: [
-    { name: "go to the shop", description: "Needs to buy some things" },
-    { name: "make a bad", description: "No description!" },
-    { name: "Learn new words", description: "learn 10 new words" },
-    { name: "do a homework", description: "do a math!" },
-  ],
+  actions: [],
   details: [],
 };
 
@@ -17,6 +12,7 @@ const reducer = (state = initialState, action) => {
       };
 
     case "DELETE_ITEM":
+      console.log(action.payload);
       let actions = state.actions.filter(
         (item) => item.name !== action.payload
       );
@@ -42,23 +38,11 @@ const reducer = (state = initialState, action) => {
         name: action.todo,
         description: `${action.description}`,
       };
-      let todoexist = false;
-      state.actions.forEach((todo) => {
-        if (todo.name === action.todo) {
-          todoexist = true;
-        }
-      });
-      if (!todoexist) {
-        return {
-          ...state,
-          actions: [...state.actions, newTodo],
-        };
-      } else {
-        console.log("this todo already exist!");
-        return {
-          ...state,
-        };
-      }
+
+      return {
+        ...state,
+        actions: [...state.actions, newTodo],
+      };
 
     default:
       return state;

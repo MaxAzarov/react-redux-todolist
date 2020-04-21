@@ -4,6 +4,7 @@ const Todo = mongoose.model("Todo", {
     type: String,
     required: true,
     trim: true,
+    unique: true,
     validata(value) {
       if (value.length < 2) {
         throw new Error("the length of todo is less than 2");
